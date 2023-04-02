@@ -1,0 +1,22 @@
+class MatrixGame
+{
+    field Array gameField;
+    constructor MatrixGame new()
+    {
+        let gameField = Array.new(9);
+        return this;
+    }
+
+    method void start()
+    {
+        do Output.printString("The game is start");
+        do Output.println();
+        return;
+    }
+
+    method void dispose()
+    {
+        do Memory.deAlloc(this);
+        return;
+    }
+}

@@ -1,7 +1,11 @@
 class Main
 {
     function void main()
-    {
-        
+    {   
+        var MatrixGame game;
+        let game = MatrixGame.new();
+        do game.start();
+        do game.dispose();
+        return;
     }
 }
