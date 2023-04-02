@@ -5,20 +5,44 @@ class MatrixGame
 
     constructor MatrixGame new(int size)
     {
+        var int i;
         let fieldSize = size;
         let gameField = Array.new(fieldSize);
-        while (~(size = 0))
+        while (i < fieldSize)
         {
-            let gameField[size - 1] = Array.new(fieldSize);
-            let size = size - 1;
+            let gameField[i] = Array.new(fieldSize);
+            let i = i + 1;
         }
         return this;
     }
 
     method void start()
     {
-        do Output.printString("The game is start");
-        do Output.println();
+        var boolean run;
+        let run = true;
+        while (run)
+        {
+            do drawGame();
+        }
+        return;
+    }
+
+    method void drawGame()
+    {
+        var int cellSize;
+        var int i;
+        let cellSize = 255 / fieldSize;
+        do Screen.setColor(true);
+        do Screen.drawLine(0, 0, 0, 255);
+        do Screen.drawLine(0, 0, 255, 0);
+        do Screen.drawLine(255, 0, 255, 255);
+        do Screen.drawLine(255, 255, 0, 255);
+        while (i < fieldSize)
+        {
+            let i = i + 1;
+            do Screen.drawLine(cellSize * i, 0, cellSize * i, 255);
+            do Screen.drawLine(0, cellSize * i, 255, cellSize * i);
+        }
         return;
     }
 
