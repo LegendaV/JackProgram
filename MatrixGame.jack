@@ -1,9 +1,17 @@
 class MatrixGame
 {
+    field int fieldSize;
     field Array gameField;
-    constructor MatrixGame new()
+
+    constructor MatrixGame new(int size)
     {
-        let gameField = Array.new(9);
+        let fieldSize = size;
+        let gameField = Array.new(fieldSize);
+        while (~(size = 0))
+        {
+            let gameField[size - 1] = Array.new(fieldSize);
+            let size = size - 1;
+        }
         return this;
     }
 
@@ -16,6 +24,12 @@ class MatrixGame
 
     method void dispose()
     {
+        var int i;
+        while (i < fieldSize)
+        {
+            do Memory.deAlloc(gameField[i]);
+            let i = i + 1;
+        }
         do Memory.deAlloc(this);
         return;
     }
