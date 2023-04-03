@@ -45,6 +45,12 @@ class OnlyOneArray
         return array;
     }
 
+    /* Return array[index] element*/
+    method int get(int index)
+    {
+        return array[index];
+    }
+
     /* Return true if is empty space in the array end*/
     method boolean isEmptyCell()
     {
