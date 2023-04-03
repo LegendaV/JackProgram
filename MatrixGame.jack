@@ -5,6 +5,9 @@ class MatrixGame
     field int activeBlock;
     field boolean isPressed;
     field Array gameField;
+    field String firstPlayerName;
+    field String secondPlayerName;
+    field int activePlayer;
 
     constructor MatrixGame new(int size)
     {
@@ -12,6 +15,9 @@ class MatrixGame
         let cellSize = 255 / fieldSize;
         let gameField = Array.new(fieldSize * fieldSize);
         let isPressed = false;
+        let firstPlayerName = "firstName";
+        let secondPlayerName = "secondName";
+        let activePlayer = 1;
         return this;
     }
 
@@ -22,6 +28,8 @@ class MatrixGame
         var int j;
         var boolean run;
         let run = true;
+        do printStat();
+        do drawGame();
         while (run)
         {
             let key = Keyboard.keyPressed();
@@ -35,9 +43,10 @@ class MatrixGame
                 let activeBlock = (i * fieldSize) + j;
                 let isPressed = true;
                 do Screen.clearScreen();
+                do printStat();
+                do drawGame();
             }
             if (key = 0) { let isPressed = false; }
-            do drawGame();
         }
         return;
     }
@@ -74,6 +83,18 @@ class MatrixGame
             let i = i + 1;
             let j = 0;
         }
+        return;
+    }
+
+    method void printStat()
+    {
+        var String str;
+        let str = "'s turn";
+        do Output.moveCursor(0, 33);
+        if (activePlayer = 1) { do Output.printString(firstPlayerName); }
+        else { do Output.printString(secondPlayerName); }
+        do Output.printString(str);
+        do Memory.deAlloc(str);
         return;
     }
 
