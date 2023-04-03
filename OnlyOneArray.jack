@@ -39,6 +39,12 @@ class OnlyOneArray
         return false;
     }
 
+    /* Return origin array*/
+    method Array getArray()
+    {
+        return array;
+    }
+
     /* Return true if is empty space in the array end*/
     method boolean isEmptyCell()
     {
