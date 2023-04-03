@@ -2,6 +2,8 @@ class MatrixGame
 {
     field int fieldSize;
     field int cellSize;
+    field int activeBlock;
+    field boolean isPressed;
     field Array gameField;
 
     constructor MatrixGame new(int size)
@@ -9,15 +11,32 @@ class MatrixGame
         let fieldSize = size;
         let cellSize = 255 / fieldSize;
         let gameField = Array.new(fieldSize * fieldSize);
+        let isPressed = false;
         return this;
     }
 
     method void start()
     {
+        var char key;
+        var int i;
+        var int j;
         var boolean run;
         let run = true;
         while (run)
         {
+            let key = Keyboard.keyPressed();
+            if (~((key = 0) | isPressed))
+            {
+                do Screen.setColor(true);
+                if ((key = 131) & (i > 0)) { let i = i - 1; }   // up arrow
+                if ((key = 133) & (i < (fieldSize - 1))) { let i = i + 1; }   // down arrow
+                if ((key = 130) & (j > 0)) { let j = j - 1; }   // left arrow
+                if ((key = 132) & (j < (fieldSize - 1))) { let j = j + 1; }   // right arrow
+                let activeBlock = (i * fieldSize) + j;
+                let isPressed = true;
+                do Screen.clearScreen();
+            }
+            if (key = 0) { let isPressed = false; }
             do drawGame();
         }
         return;
@@ -45,6 +64,11 @@ class MatrixGame
             while (j < fieldSize)
             {
                 //TODO ...
+                if ((i * fieldSize) + j = activeBlock)
+                {
+                    do Screen.setColor(true);
+                    do Screen.drawRectangle(cellSize * j, cellSize * i, cellSize * (j + 1), cellSize * (i + 1));
+                }
                 let j = j + 1;
             }
             let i = i + 1;
