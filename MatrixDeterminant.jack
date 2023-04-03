@@ -1,0 +1,19 @@
+class MatrixDeterminant
+{
+    function boolean Square3n3(Array mat)
+    {
+        var int det;
+        det = mat[0] * mat[4] * mat[8];
+        det = det + (mat[1] * mat[5] * mat[6]);
+        det = det + (mat[2] * mat[3] * mat[7]);
+        det = det - (mat[2] * mat[4] * mat[6]);
+        det = det - (mat[1] * mat[3] * mat[8]);
+        det = det - (mat[0] * mat[5] * mat[7]);
+        if (det > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+}
