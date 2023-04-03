@@ -1,0 +1,63 @@
+/** Array which can hold unique element*/
+class OnlyOneArray
+{
+    field int length;
+    field int emptyCellCount;
+    field Array array;
+
+    constructor OnlyOneArray new(int lengthArray)
+    {
+        let length = lengthArray;
+        let emptyCellCount = length;
+        let array = Array.new(length);
+        return this;
+    }
+
+    /* Add unique element in the end of the array. Return true if sucsses*/
+    method boolean add(int element)
+    {
+        var int i;
+        while (i < length)
+        {
+            if (array[i] = element)
+            {
+                return false;
+            }
+            if (array[i] = 0)
+            {
+                let emptyCellCount = emptyCellCount - 1;
+                let array[i] = element;
+                return true;
+            }
+            let i = i + 1;
+        }
+        return false;
+    }
+
+    /* Return true if element contains in the array*/
+    method boolean contains(int element)
+    {
+        var int i;
+        while (i < length)
+        {
+            if (array[i] = element)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /* Return true if is empty space in the array end*/
+    method boolean isEmptyCell()
+    {
+        return (emptyCellCount > 0);
+    }
+
+    method void dispose()
+    {
+        do Memory.deAlloc(array);
+        do Memory.deAlloc(this);
+        return;
+    }
+}
