@@ -3,11 +3,12 @@ class MatrixGame
     field int fieldSize;
     field int cellSize;
     field int activeBlock;
+    field int emptyCellCount;
     field boolean isPressed;
     field Array gameField;
     field String firstPlayerName;
     field String secondPlayerName;
-    field int activePlayer;
+    field boolean activeFirstPlayer;
 
     constructor MatrixGame new(int size)
     {
@@ -17,7 +18,7 @@ class MatrixGame
         let isPressed = false;
         let firstPlayerName = "firstName";
         let secondPlayerName = "secondName";
-        let activePlayer = 1;
+        let activeFirstPlayer = true;
         return this;
     }
 
@@ -35,11 +36,13 @@ class MatrixGame
             let key = Keyboard.keyPressed();
             if (~((key = 0) | isPressed))
             {
-                do Screen.setColor(true);
                 if ((key = 131) & (i > 0)) { let i = i - 1; }   // up arrow
                 if ((key = 133) & (i < (fieldSize - 1))) { let i = i + 1; }   // down arrow
                 if ((key = 130) & (j > 0)) { let j = j - 1; }   // left arrow
                 if ((key = 132) & (j < (fieldSize - 1))) { let j = j + 1; }   // right arrow
+                if ((key > 48) & (key < 58))
+                    { if (gameField[activeBlock] = 0)
+                        { let gameField[activeBlock] = key - 48; let activeFirstPlayer = ~(activeFirstPlayer); } }
                 let activeBlock = (i * fieldSize) + j;
                 let isPressed = true;
                 do Screen.clearScreen();
@@ -88,13 +91,20 @@ class MatrixGame
 
     method void printStat()
     {
-        var String str;
-        let str = "'s turn";
+        var int i;
+        var String afterName;
+        let afterName = "'s turn";
         do Output.moveCursor(0, 33);
-        if (activePlayer = 1) { do Output.printString(firstPlayerName); }
+        if (activeFirstPlayer) { do Output.printString(firstPlayerName); }
         else { do Output.printString(secondPlayerName); }
-        do Output.printString(str);
-        do Memory.deAlloc(str);
+        do Output.printString(afterName);
+        do Output.moveCursor(1, 33);
+        while (i < (fieldSize * fieldSize))
+        {
+            do Output.printInt(gameField[i]);
+            let i = i + 1;
+        }
+        do Memory.deAlloc(afterName);
         return;
     }
 
