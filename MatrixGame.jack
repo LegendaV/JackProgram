@@ -19,6 +19,7 @@ class MatrixGame
         let firstPlayerName = "firstName";
         let secondPlayerName = "secondName";
         let activeFirstPlayer = true;
+        let emptyCellCount = fieldSize * fieldSize;
         return this;
     }
 
@@ -33,6 +34,7 @@ class MatrixGame
         do drawGame();
         while (run)
         {
+            if (emptyCellCount = 0) {let run = false; do finishGame();}
             let key = Keyboard.keyPressed();
             if (~((key = 0) | isPressed))
             {
@@ -41,8 +43,14 @@ class MatrixGame
                 if ((key = 130) & (j > 0)) { let j = j - 1; }   // left arrow
                 if ((key = 132) & (j < (fieldSize - 1))) { let j = j + 1; }   // right arrow
                 if ((key > 48) & (key < 58))
-                    { if (gameField[activeBlock] = 0)
-                        { let gameField[activeBlock] = key - 48; let activeFirstPlayer = ~(activeFirstPlayer); } }
+                {
+                    if (gameField[activeBlock] = 0)
+                    {
+                        let gameField[activeBlock] = key - 48;
+                        let activeFirstPlayer = ~(activeFirstPlayer);
+                        let emptyCellCount = emptyCellCount - 1;
+                    }
+                }
                 let activeBlock = (i * fieldSize) + j;
                 let isPressed = true;
                 do Screen.clearScreen();
@@ -105,6 +113,26 @@ class MatrixGame
             let i = i + 1;
         }
         do Memory.deAlloc(afterName);
+        return;
+    }
+
+    method void finishGame()
+    {
+        var String message1;
+        var String message2;
+        var int det;
+        let message1 = "Determinant is ";
+        let message2 = " win!";
+        let det = MatrixDeterminant.Square3n3(gameField);
+        do Output.moveCursor(10, 33);
+        do Output.printString(message1);
+        do Output.printInt(det);
+        do Output.moveCursor(11, 33);
+        if (det > 0) { do Output.printString(firstPlayerName); }
+        else { do Output.printString(secondPlayerName); }
+        do Output.printString(message2);
+        do Memory.deAlloc(message1);
+        do Memory.deAlloc(message2);
         return;
     }
 
