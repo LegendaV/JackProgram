@@ -100,39 +100,34 @@ class MatrixGame
     method void printStat()
     {
         var int i;
-        var String afterName;
-        let afterName = "'s turn";
         do Output.moveCursor(0, 33);
         if (activeFirstPlayer) { do Output.printString(firstPlayerName); }
         else { do Output.printString(secondPlayerName); }
-        do Output.printString(afterName);
+        do Output.printString(Message.playerTurnMessage());
         do Output.moveCursor(1, 33);
         while (i < (fieldSize * fieldSize))
         {
             do Output.printInt(gameField[i]);
             let i = i + 1;
         }
-        do Memory.deAlloc(afterName);
         return;
     }
 
     method void finishGame()
     {
-        var String message1;
-        var String message2;
         var int det;
-        let message1 = "Determinant is ";
-        let message2 = " win!";
         let det = MatrixDeterminant.Square3n3(gameField);
         do Output.moveCursor(10, 33);
-        do Output.printString(message1);
+        do Output.printString(Message.determinantMessage());
         do Output.printInt(det);
         do Output.moveCursor(11, 33);
-        if (det > 0) { do Output.printString(firstPlayerName); }
-        else { do Output.printString(secondPlayerName); }
-        do Output.printString(message2);
-        do Memory.deAlloc(message1);
-        do Memory.deAlloc(message2);
+        if (~(det = 0))
+        {
+            if (det > 0) { do Output.printString(firstPlayerName); }
+            else { do Output.printString(secondPlayerName); }
+            do Output.printString(Message.winMessage());
+        }
+        else { do Output.printString(Message.noSidesMessage()); }
         return;
     }
 

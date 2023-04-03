@@ -1,0 +1,32 @@
+class Message
+{
+    static String message;
+
+    function String playerTurnMessage()
+    {
+        if (~(message = null)) { do Memory.deAlloc(message); }
+        let message = "'s turn!";
+        return message;
+    }
+
+    function String determinantMessage()
+    {
+        if (~(message = null)) { do Memory.deAlloc(message); }
+        let message = "Determinant is ";
+        return message;
+    }
+
+    function String winMessage()
+    {
+        if (~(message = null)) { do Memory.deAlloc(message); }
+        let message = " win!";
+        return message;
+    }
+
+    function String noSidesMessage()
+    {
+        if (~(message = null)) { do Memory.deAlloc(message); }
+        let message = "No sides!";
+        return message;
+    }
+}
