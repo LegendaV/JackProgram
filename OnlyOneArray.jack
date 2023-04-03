@@ -60,7 +60,7 @@ class OnlyOneArray
 
     method void dispose()
     {
-        do Memory.deAlloc(array);
+        do array.dispose();
         do Memory.deAlloc(this);
         return;
     }

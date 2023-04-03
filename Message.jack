@@ -4,28 +4,28 @@ class Message
 
     function String playerTurnMessage()
     {
-        if (~(message = null)) { do Memory.deAlloc(message); }
+        if (~(message = null)) { do message.dispose(); }
         let message = "'s turn!";
         return message;
     }
 
     function String determinantMessage()
     {
-        if (~(message = null)) { do Memory.deAlloc(message); }
+        if (~(message = null)) { do message.dispose(); }
         let message = "Determinant is ";
         return message;
     }
 
     function String winMessage()
     {
-        if (~(message = null)) { do Memory.deAlloc(message); }
+        if (~(message = null)) { do message.dispose(); }
         let message = " win!";
         return message;
     }
 
     function String noSidesMessage()
     {
-        if (~(message = null)) { do Memory.deAlloc(message); }
+        if (~(message = null)) { do message.dispose(); }
         let message = "No sides!";
         return message;
     }

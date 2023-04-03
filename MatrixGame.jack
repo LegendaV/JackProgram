@@ -131,6 +131,8 @@ class MatrixGame
     {
         var int i;
         do gameField.dispose();
+        do firstPlayerName.dispose();
+        do secondPlayerName.dispose();
         do Memory.deAlloc(this);
         return;
     }
