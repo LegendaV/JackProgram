@@ -1,18 +1,14 @@
 class MatrixGame
 {
     field int fieldSize;
+    field int cellSize;
     field Array gameField;
 
     constructor MatrixGame new(int size)
     {
-        var int i;
         let fieldSize = size;
-        let gameField = Array.new(fieldSize);
-        while (i < fieldSize)
-        {
-            let gameField[i] = Array.new(fieldSize);
-            let i = i + 1;
-        }
+        let cellSize = 255 / fieldSize;
+        let gameField = Array.new(fieldSize * fieldSize);
         return this;
     }
 
@@ -29,9 +25,8 @@ class MatrixGame
 
     method void drawGame()
     {
-        var int cellSize;
         var int i;
-        let cellSize = 255 / fieldSize;
+        var int j;
         do Screen.setColor(true);
         do Screen.drawLine(0, 0, 0, 255);
         do Screen.drawLine(0, 0, 255, 0);
@@ -43,17 +38,25 @@ class MatrixGame
             do Screen.drawLine(cellSize * i, 0, cellSize * i, 255);
             do Screen.drawLine(0, cellSize * i, 255, cellSize * i);
         }
+        let i = 0;
+        /*Вывод элементов массива на экран*/
+        while (i < fieldSize)
+        {
+            while (j < fieldSize)
+            {
+                //TODO ...
+                let j = j + 1;
+            }
+            let i = i + 1;
+            let j = 0;
+        }
         return;
     }
 
     method void dispose()
     {
         var int i;
-        while (i < fieldSize)
-        {
-            do Memory.deAlloc(gameField[i]);
-            let i = i + 1;
-        }
+        do Memory.deAlloc(gameField);
         do Memory.deAlloc(this);
         return;
     }
