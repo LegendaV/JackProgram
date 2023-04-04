@@ -1,0 +1,141 @@
+class Image
+{
+    field int cellSize;
+    
+    constructor Image new(int cellsize)
+    {
+        let cellSize = cellsize;
+        return this;
+    }
+
+    method void Draw0(int xCell, int yCell)
+    {
+        do Screen.setColor(true);
+        do Screen.drawCircle(43 + (xCell * cellSize),43 + (yCell * cellSize),30);
+        do Screen.setColor(false);
+        do Screen.drawCircle(43 + (xCell * cellSize),43 + (xCell * cellSize),24);
+        return;
+    }
+
+    method void Draw1(int xCell, int yCell)
+    {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(37 + (xCell * cellSize),20 + (yCell * cellSize),47 + (xCell * cellSize), 60 + (yCell * cellSize));
+        do Screen.setColor(true);
+        do Screen.drawRectangle(31 + (xCell * cellSize),60 + (yCell * cellSize),55 + (xCell * cellSize), 65 + (yCell * cellSize));
+        return;
+    }
+
+    method void Draw2(int xCell, int yCell)
+    {
+        var int x;
+        var int y;
+        let x = xCell * cellSize;
+        let y = yCell * cellSize;
+        do Screen.drawRectangle(10 + x,6 + y, 77 + x, 13 + y);
+        do Screen.drawRectangle(68 + x, 13 + y, 77 + x, 39 + y);
+        do Screen.drawRectangle(10 + x, 39 + y, 77 + x, 47 + y);
+        do Screen.drawRectangle(10 + x, 48 + y, 17 + x, 80 + y);
+        do Screen.drawRectangle(17 + x, 74 + y, 79 + x, 80 + y);
+        return;
+    }
+
+    method void Draw3(int xCell, int yCell)
+    {
+        var int x;
+        var int y;
+        let x = xCell * cellSize;
+        let y = yCell * cellSize;
+        do Screen.drawRectangle(10 + x,6 + y, 77 + x, 13 + y);
+        do Screen.drawRectangle(68 + x, 13 + y, 77 + x, 39 + y);
+        do Screen.drawRectangle(10 + x, 39 + y, 77 + x, 47 + y);
+        do Screen.drawRectangle(68 + x, 13 + y, 77 + x, 81 + y);
+        do Screen.drawRectangle(10 + x, 74 + y, 77 + x, 81 + y);
+        return;
+    }
+
+    method void Draw4(int xCell, int yCell)
+    {
+        var int x;
+        var int y;
+        let x = xCell * cellSize;
+        let y = yCell * cellSize;
+        do Screen.drawRectangle(68 + x, 13 + y, 77 + x, 81 + y);
+        do Screen.drawRectangle(10 + x, 13 + y, 19 + x, 47 + y);
+        do Screen.drawRectangle(10 + x, 39 + y, 77 + x, 47 + y);
+        return;
+    }
+
+    method void Draw5(int xCell, int yCell)
+    {
+        var int x;
+        var int y;
+        let x = xCell * cellSize;
+        let y = yCell * cellSize;
+        do Screen.drawRectangle(8 + x, 8 + y, 79 + x, 14 + y);
+        do Screen.drawRectangle(8 + x, 14 + y, 14 + x, 41 + y);
+        do Screen.drawRectangle(14 + x, 35 + y, 79 + x, 41 + y);
+        do Screen.drawRectangle(73 + x, 41 + y, 79 + x, 78 + y);
+        do Screen.drawRectangle(8 + x, 72 + y, 79 + x, 78 + y);
+        return;
+    }
+
+    method void Draw6(int xCell, int yCell)
+    {
+        var int x;
+        var int y;
+        let x = xCell * cellSize;
+        let y = yCell * cellSize;
+        do Screen.drawRectangle(8 + x, 8 + y, 79 + x, 14 + y);
+        do Screen.drawRectangle(8 + x, 14 + y, 14 + x, 41 + y);
+        do Screen.drawRectangle(14 + x, 35 + y, 79 + x, 41 + y);
+        do Screen.drawRectangle(8 + x, 41 + y, 13 + x, 72 + y);
+        do Screen.drawRectangle(73 + x, 41 + y, 79 + x, 78 + y);
+        do Screen.drawRectangle(8 + x, 72 + y, 79 + x, 78 + y);
+        return;
+    }
+
+    method void Draw7(int xCell, int yCell)
+    {
+        var int x;
+        var int y;
+        let x = xCell * cellSize;
+        let y = yCell * cellSize;
+        do Screen.drawRectangle(8 + x, 8 + y, 79 + x, 14 + y);
+        do Screen.drawLine(8 + x, 80 + y, 78 + x, 13 + y);
+        do Screen.drawLine(10 + x, 82 + y, 80 + x, 15 + y);
+        do Screen.drawLine(9 + x, 81 + y, 79 + x, 14 + y);
+        do Screen.drawRectangle(16 + x, 41 + y, 70 + x, 46 + y);
+        return;
+    }
+
+    method void Draw8(int xCell, int yCell)
+    {
+        var int x;
+        var int y;
+        let x = xCell * cellSize;
+        let y = yCell * cellSize;
+        do Screen.drawRectangle(8 + x, 8 + y, 79 + x, 14 + y);
+        do Screen.drawRectangle(8 + x, 14 + y, 14 + x, 41 + y);
+        do Screen.drawRectangle(73 + x, 14 + y, 79 + x, 41 + y);
+        do Screen.drawRectangle(14 + x, 35 + y, 79 + x, 41 + y);
+        do Screen.drawRectangle(8 + x, 41 + y, 13 + x, 72 + y);
+        do Screen.drawRectangle(73 + x, 41 + y, 79 + x, 78 + y);
+        do Screen.drawRectangle(8 + x, 72 + y, 79 + x, 78 + y);
+        return;
+    }
+
+    method void Draw9(int xCell, int yCell)
+    {
+        var int x;
+        var int y;
+        let x = xCell * cellSize;
+        let y = yCell * cellSize;
+        do Screen.drawRectangle(8 + x, 8 + y, 79 + x, 14 + y);
+        do Screen.drawRectangle(8 + x, 14 + y, 14 + x, 41 + y); //
+        do Screen.drawRectangle(14 + x, 35 + y, 79 + x, 41 + y); //
+        do Screen.drawRectangle(73 + x, 8 + y, 79 + x, 78 + y);
+        do Screen.drawRectangle(8 + x, 72 + y, 79 + x, 78 + y);
+        return;
+    }
+}
