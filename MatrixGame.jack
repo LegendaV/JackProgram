@@ -3,6 +3,7 @@ class MatrixGame
     field int fieldSize;
     field int cellSize;
     field int activeBlock;
+    field Image image;
     field boolean isPressed;
     field OnlyOneArray gameField;
     field String firstPlayerName;
@@ -14,6 +15,7 @@ class MatrixGame
         let fieldSize = size;
         let cellSize = 255 / fieldSize;
         let gameField = OnlyOneArray.new(fieldSize * fieldSize);
+        let image = Image.new(cellSize);
         let isPressed = false;
         let firstPlayerName = "firstName";
         let secondPlayerName = "secondName";
@@ -69,7 +71,7 @@ class MatrixGame
         do Screen.drawLine(255, 255, 0, 255);
         while (i < fieldSize)
         {
-            let i = i + 1;
+            let i = i + 1;  
             do Screen.drawLine(cellSize * i, 0, cellSize * i, 255);
             do Screen.drawLine(0, cellSize * i, 255, cellSize * i);
         }
@@ -79,11 +81,17 @@ class MatrixGame
         {
             while (j < fieldSize)
             {
-                //TODO ...
                 if ((i * fieldSize) + j = activeBlock)
                 {
                     do Screen.setColor(true);
                     do Screen.drawRectangle(cellSize * j, cellSize * i, cellSize * (j + 1), cellSize * (i + 1));
+                    do image.setColor(false);
+                    do image.draw(gameField.get((i * fieldSize) + j), j, i);
+                }
+                else
+                {
+                    do image.setColor(true);
+                    do image.draw(gameField.get((i * fieldSize) + j), j, i);
                 }
                 let j = j + 1;
             }
@@ -101,11 +109,6 @@ class MatrixGame
         else { do Output.printString(secondPlayerName); }
         do Output.printString(Message.playerTurnMessage());
         do Output.moveCursor(1, 33);
-        while (i < (fieldSize * fieldSize))
-        {
-            do Output.printInt(gameField.get(i));
-            let i = i + 1;
-        }
         return;
     }
 

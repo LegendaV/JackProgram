@@ -16,21 +16,22 @@ class Image
         return;
     }
 
-    method void Draw(int number, int xCell, int yCell)
+    method void draw(int number, int xCell, int yCell)
     {
-        if (number = 0) { do Draw0(xCell, yCell); }
-        if (number = 1) { do Draw1(xCell, yCell); }
-        if (number = 2) { do Draw2(xCell, yCell); }
-        if (number = 3) { do Draw3(xCell, yCell); }
-        if (number = 4) { do Draw4(xCell, yCell); }
-        if (number = 5) { do Draw5(xCell, yCell); }
-        if (number = 6) { do Draw6(xCell, yCell); }
-        if (number = 7) { do Draw7(xCell, yCell); }
-        if (number = 8) { do Draw8(xCell, yCell); }
-        if (number = 9) { do Draw9(xCell, yCell); }
+        if (number = 0) { return; }
+        if (number = 1) { do draw1(xCell, yCell); }
+        if (number = 2) { do draw2(xCell, yCell); }
+        if (number = 3) { do draw3(xCell, yCell); }
+        if (number = 4) { do draw4(xCell, yCell); }
+        if (number = 5) { do draw5(xCell, yCell); }
+        if (number = 6) { do draw6(xCell, yCell); }
+        if (number = 7) { do draw7(xCell, yCell); }
+        if (number = 8) { do draw8(xCell, yCell); }
+        if (number = 9) { do draw9(xCell, yCell); }
+        return;
     }
 
-    method void Draw0(int xCell, int yCell)
+    method void draw0(int xCell, int yCell)
     {
         do Screen.setColor(color);
         do Screen.drawCircle(43 + (xCell * cellSize),43 + (yCell * cellSize),30);
@@ -39,7 +40,7 @@ class Image
         return;
     }
 
-    method void Draw1(int xCell, int yCell)
+    method void draw1(int xCell, int yCell)
     {
         do Screen.setColor(color);
         do Screen.drawRectangle(37 + (xCell * cellSize),20 + (yCell * cellSize),47 + (xCell * cellSize), 60 + (yCell * cellSize));
@@ -47,7 +48,7 @@ class Image
         return;
     }
 
-    method void Draw2(int xCell, int yCell)
+    method void draw2(int xCell, int yCell)
     {
         var int x;
         var int y;
@@ -62,7 +63,7 @@ class Image
         return;
     }
 
-    method void Draw3(int xCell, int yCell)
+    method void draw3(int xCell, int yCell)
     {
         var int x;
         var int y;
@@ -77,7 +78,7 @@ class Image
         return;
     }
 
-    method void Draw4(int xCell, int yCell)
+    method void draw4(int xCell, int yCell)
     {
         var int x;
         var int y;
@@ -90,7 +91,7 @@ class Image
         return;
     }
 
-    method void Draw5(int xCell, int yCell)
+    method void draw5(int xCell, int yCell)
     {
         var int x;
         var int y;
@@ -105,7 +106,7 @@ class Image
         return;
     }
 
-    method void Draw6(int xCell, int yCell)
+    method void draw6(int xCell, int yCell)
     {
         var int x;
         var int y;
@@ -121,7 +122,7 @@ class Image
         return;
     }
 
-    method void Draw7(int xCell, int yCell)
+    method void draw7(int xCell, int yCell)
     {
         var int x;
         var int y;
@@ -136,7 +137,7 @@ class Image
         return;
     }
 
-    method void Draw8(int xCell, int yCell)
+    method void draw8(int xCell, int yCell)
     {
         var int x;
         var int y;
@@ -153,7 +154,7 @@ class Image
         return;
     }
 
-    method void Draw9(int xCell, int yCell)
+    method void draw9(int xCell, int yCell)
     {
         var int x;
         var int y;
