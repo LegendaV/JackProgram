@@ -6,15 +6,25 @@ class MatrixGame
     field Image image;
     field boolean isPressed;
     field OnlyOneArray gameField;
+    field Array unusedNumber;
     field String firstPlayerName;
     field String secondPlayerName;
     field boolean activeFirstPlayer;
 
     constructor MatrixGame new(int size)
     {
+        var int i;
+        var int numberCount;
         let fieldSize = size;
         let cellSize = 255 / fieldSize;
-        let gameField = OnlyOneArray.new(fieldSize * fieldSize);
+        let numberCount = fieldSize * fieldSize;
+        let gameField = OnlyOneArray.new(numberCount);
+        let unusedNumber = Array.new(numberCount);
+        while (i < numberCount)
+        {
+            let unusedNumber[i] = i + 1;
+            let i = i + 1;
+        }
         let image = Image.new(cellSize);
         let isPressed = false;
         let firstPlayerName = "firstName";
@@ -47,6 +57,7 @@ class MatrixGame
                     if (gameField.add(key - 48, activeBlock))
                     {
                         let activeFirstPlayer = ~(activeFirstPlayer);
+                        let unusedNumber[key - 49] = 0;
                     }
                 }
                 let activeBlock = (i * fieldSize) + j;
@@ -64,6 +75,7 @@ class MatrixGame
     {
         var int i;
         var int j;
+        var int blockNow;
         do Screen.setColor(true);
         do Screen.drawLine(0, 0, 0, 255);
         do Screen.drawLine(0, 0, 255, 0);
@@ -81,17 +93,18 @@ class MatrixGame
         {
             while (j < fieldSize)
             {
-                if ((i * fieldSize) + j = activeBlock)
+                let blockNow = (i * fieldSize) + j;
+                if (blockNow = activeBlock)
                 {
                     do Screen.setColor(true);
                     do Screen.drawRectangle(cellSize * j, cellSize * i, cellSize * (j + 1), cellSize * (i + 1));
                     do image.setColor(false);
-                    do image.draw(gameField.get((i * fieldSize) + j), j, i);
+                    do image.draw(gameField.get(blockNow), j, i);
                 }
                 else
                 {
                     do image.setColor(true);
-                    do image.draw(gameField.get((i * fieldSize) + j), j, i);
+                    do image.draw(gameField.get(blockNow), j, i);
                 }
                 let j = j + 1;
             }
@@ -104,11 +117,24 @@ class MatrixGame
     method void printStat()
     {
         var int i;
+        var int numberCount;
+        let numberCount = fieldSize * fieldSize;
         do Output.moveCursor(0, 33);
         if (activeFirstPlayer) { do Output.printString(firstPlayerName); }
         else { do Output.printString(secondPlayerName); }
         do Output.printString(Message.playerTurnMessage());
-        do Output.moveCursor(1, 33);
+        do Output.moveCursor(3, 33);
+        do Output.printString(Message.unusedMessage());
+        do Output.moveCursor(4, 36);
+        while (i < numberCount)
+        {
+            if (~(unusedNumber[i] = 0))
+            {
+                do Output.printInt(unusedNumber[i]);
+                do Output.printString(Message.separateMessage());
+            }
+            let i = i + 1;
+        }
         return;
     }
 
@@ -134,8 +160,10 @@ class MatrixGame
     {
         var int i;
         do gameField.dispose();
+        do unusedNumber.dispose();
         do firstPlayerName.dispose();
         do secondPlayerName.dispose();
+        do image.dispose();
         do Memory.deAlloc(this);
         return;
     }

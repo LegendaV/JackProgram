@@ -29,4 +29,18 @@ class Message
         let message = "No sides!";
         return message;
     }
+
+    function String unusedMessage()
+    {
+        if (~(message = null)) { do message.dispose(); }
+        let message = "Unused number: ";
+        return message;
+    }
+
+    function String separateMessage()
+    {
+        if (~(message = null)) { do message.dispose(); }
+        let message = ";";
+        return message;
+    }
 }

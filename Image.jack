@@ -168,4 +168,10 @@ class Image
         do Screen.drawRectangle(8 + x, 72 + y, 79 + x, 78 + y);
         return;
     }
+
+    method void dispose()
+    {
+        do Memory.deAlloc(this);
+        return;
+    }
 }
