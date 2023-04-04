@@ -16,6 +16,20 @@ class Image
         return;
     }
 
+    method void Draw(int number, int xCell, int yCell)
+    {
+        if (number = 0) { do Draw0(xCell, yCell); }
+        if (number = 1) { do Draw1(xCell, yCell); }
+        if (number = 2) { do Draw2(xCell, yCell); }
+        if (number = 3) { do Draw3(xCell, yCell); }
+        if (number = 4) { do Draw4(xCell, yCell); }
+        if (number = 5) { do Draw5(xCell, yCell); }
+        if (number = 6) { do Draw6(xCell, yCell); }
+        if (number = 7) { do Draw7(xCell, yCell); }
+        if (number = 8) { do Draw8(xCell, yCell); }
+        if (number = 9) { do Draw9(xCell, yCell); }
+    }
+
     method void Draw0(int xCell, int yCell)
     {
         do Screen.setColor(color);
