@@ -11,7 +11,7 @@ class MatrixGame
     field String secondPlayerName;
     field boolean activeFirstPlayer;
 
-    constructor MatrixGame new(int size)
+    constructor MatrixGame new(int size, String firstName, String secondName)
     {
         var int i;
         var int numberCount;
@@ -25,10 +25,11 @@ class MatrixGame
             let unusedNumber[i] = i + 1;
             let i = i + 1;
         }
+        let activeBlock = 0;
         let image = Image.new(cellSize);
         let isPressed = false;
-        let firstPlayerName = "firstName";
-        let secondPlayerName = "secondName";
+        let firstPlayerName = firstName;
+        let secondPlayerName = secondName;
         let activeFirstPlayer = true;
         return this;
     }
@@ -153,6 +154,11 @@ class MatrixGame
             do Output.printString(Message.winMessage());
         }
         else { do Output.printString(Message.noSidesMessage()); }
+
+        do Output.moveCursor(15, 33);
+        do Output.printString(Message.pressKeyMessage());
+        do Sys.wait(1000);
+        do Keyboard.readChar();
         return;
     }
 

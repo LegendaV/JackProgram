@@ -2,10 +2,7 @@ class Main
 {
     function void main()
     {   
-        var MatrixGame game;
-        let game = MatrixGame.new(3);
-        do game.start();
-        do game.dispose();
+        do MainMenu.run();
         return;
     }
 }

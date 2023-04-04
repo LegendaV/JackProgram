@@ -2,6 +2,48 @@ class Message
 {
     static String message;
 
+    function String gameNameMessage()
+    {
+        if (~(message = null)) { do message.dispose(); }
+        let message = "Matrix Game";
+        return message;
+    }
+
+    function String helloEnterMessage()
+    {
+        if (~(message = null)) { do message.dispose(); }
+        let message = "Press Enter to play";
+        return message;
+    }
+
+    function String helloHMessage()
+    {
+        if (~(message = null)) { do message.dispose(); }
+        let message = "Press \"h\" to read the rules";
+        return message;
+    }
+
+    function String helloEscMessage()
+    {
+        if (~(message = null)) { do message.dispose(); }
+        let message = "Press Esc to exit";
+        return message;
+    }
+
+    function String enterFirstNameMessage()
+    {
+        if (~(message = null)) { do message.dispose(); }
+        let message = "Enter first player name: ";
+        return message;
+    }
+
+    function String enterSecondNameMessage()
+    {
+        if (~(message = null)) { do message.dispose(); }
+        let message = "Enter second player name: ";
+        return message;
+    }
+
     function String playerTurnMessage()
     {
         if (~(message = null)) { do message.dispose(); }
@@ -41,6 +83,13 @@ class Message
     {
         if (~(message = null)) { do message.dispose(); }
         let message = ";";
+        return message;
+    }
+
+    function String pressKeyMessage()
+    {
+        if (~(message = null)) { do message.dispose(); }
+        let message = "Press any key to continue";
         return message;
     }
 }

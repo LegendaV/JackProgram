@@ -1,0 +1,65 @@
+class MainMenu
+{
+    static int gameCount;
+
+    function void run()
+    {
+        var boolean run;
+        var boolean waitCommand;
+        var char key;
+        let run = true;
+        while (run)
+        {
+            do Screen.clearScreen();
+            do MainMenu.printHello();
+            let waitCommand = true;
+            while (waitCommand)
+            {
+                let key = Keyboard.keyPressed();
+                if (key = 140) {let waitCommand = false; let run = false;} // ecs pressed
+                if (key = 128) {let waitCommand = false; do MainMenu.gmaeStart();} // enter pressed
+            }
+        }
+        return;
+    }
+
+    function void printHello()
+    {
+        do Output.moveCursor(0, 0);
+        do Output.printString(Message.gameNameMessage());
+
+        do Output.moveCursor(3, 0);
+        do Output.printString(Message.helloEnterMessage());
+
+        do Output.println();
+        do Output.println();
+        do Output.printString(Message.helloHMessage());
+
+        do Output.println();
+        do Output.println();
+        do Output.printString(Message.helloEscMessage());
+        return;
+    }
+
+    function void gmaeStart()
+    {
+        var MatrixGame game;
+        var String firstPlayerName;
+        var String secondPlayerName;
+        let gameCount = gameCount + 1;
+        do Screen.clearScreen();
+        
+        do Output.moveCursor(0, 0);
+        do Sys.wait(1000);
+        let firstPlayerName = Keyboard.readLine(Message.enterFirstNameMessage());
+        do Output.moveCursor(5, 0);
+        do Sys.wait(1000);
+        let secondPlayerName = Keyboard.readLine(Message.enterSecondNameMessage());
+
+        do Screen.clearScreen();
+        let game = MatrixGame.new(3, firstPlayerName, secondPlayerName);
+        do game.start();
+        do game.dispose();
+        return;
+    }
+}
