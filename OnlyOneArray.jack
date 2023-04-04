@@ -8,6 +8,7 @@ class OnlyOneArray
     constructor OnlyOneArray new(int lengthArray)
     {
         var int i;
+
         let length = lengthArray;
         let emptyCellCount = length;
         let array = Array.new(length);
@@ -36,6 +37,7 @@ class OnlyOneArray
     method boolean contains(int element)
     {
         var int i;
+        
         while (i < length)
         {
             if (array[i] = element)

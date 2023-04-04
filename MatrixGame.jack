@@ -15,6 +15,7 @@ class MatrixGame
     {
         var int i;
         var int numberCount;
+
         let fieldSize = size;
         let cellSize = 255 / fieldSize;
         let numberCount = fieldSize * fieldSize;
@@ -40,6 +41,7 @@ class MatrixGame
         var int i;
         var int j;
         var boolean run;
+
         let run = true;
         do printStat();
         do drawGame();
@@ -77,6 +79,7 @@ class MatrixGame
         var int i;
         var int j;
         var int blockNow;
+
         do Screen.setColor(true);
         do Screen.drawLine(0, 0, 0, 255);
         do Screen.drawLine(0, 0, 255, 0);
@@ -119,6 +122,7 @@ class MatrixGame
     {
         var int i;
         var int numberCount;
+
         let numberCount = fieldSize * fieldSize;
         do Output.moveCursor(0, 33);
         if (activeFirstPlayer) { do Output.printString(firstPlayerName); }
@@ -142,6 +146,7 @@ class MatrixGame
     method void finishGame()
     {
         var int det;
+
         let det = MatrixDeterminant.Square3n3(gameField.getArray());
         do Output.moveCursor(10, 33);
         do Output.printString(Message.determinantMessage());
@@ -165,6 +170,7 @@ class MatrixGame
     method void dispose()
     {
         var int i;
+        
         do gameField.dispose();
         do unusedNumber.dispose();
         do firstPlayerName.dispose();

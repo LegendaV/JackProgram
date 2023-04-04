@@ -3,6 +3,7 @@ class MatrixDeterminant
     function int Square3n3(Array mat)
     {
         var int det;
+        
         let det = mat[0] * mat[4] * mat[8];
         let det = det + (mat[1] * mat[5] * mat[6]);
         let det = det + (mat[2] * mat[3] * mat[7]);
