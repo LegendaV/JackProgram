@@ -1,12 +1,14 @@
 class MainMenu
 {
     static int gameCount;
+    static boolean random;
 
     function void run()
     {
         var boolean run;
         var boolean waitCommand;
         var char key;
+
         let run = true;
         while (run)
         {
@@ -15,9 +17,11 @@ class MainMenu
             let waitCommand = true;
             while (waitCommand)
             {
+                let random = ~random;
                 let key = Keyboard.keyPressed();
-                if (key = 140) {let waitCommand = false; let run = false;} // ecs pressed
-                if (key = 128) {let waitCommand = false; do MainMenu.gmaeStart();} // enter pressed
+                if (key = 140) { let waitCommand = false; let run = false; } // ecs pressed
+                if (key = 128) { let waitCommand = false; do MainMenu.gmaeStart(); } // enter pressed
+                if (key = 72) { let waitCommand = false; do MainMenu.help(); } // h pressed
             }
         }
         return;
@@ -46,9 +50,12 @@ class MainMenu
         var MatrixGame game;
         var String firstPlayerName;
         var String secondPlayerName;
+        var String tempName;
+        var boolean isGameCountEven;
+
         let gameCount = gameCount + 1;
         do Screen.clearScreen();
-        
+
         do Output.moveCursor(0, 0);
         do Sys.wait(1000);
         let firstPlayerName = Keyboard.readLine(Message.enterFirstNameMessage());
@@ -56,10 +63,47 @@ class MainMenu
         do Sys.wait(1000);
         let secondPlayerName = Keyboard.readLine(Message.enterSecondNameMessage());
 
+        /* Random who begin */
+        /*
+        let isGameCountEven = true;
+        if (((gameCount / 2) * 2) - gameCount = 0)
+        {
+            let isGameCountEven = false;
+        }
+        if ((firstPlayerName[0] > secondPlayerName[0]) & gameCount)
+        {
+            let tempName = firstPlayerName;
+            let firstPlayerName = secondPlayerName;
+            let secondPlayerName = tempName;
+        }
+        */
+        if (random)
+        {
+            let tempName = firstPlayerName;
+            let firstPlayerName = secondPlayerName;
+            let secondPlayerName = tempName;
+        }
+
         do Screen.clearScreen();
         let game = MatrixGame.new(3, firstPlayerName, secondPlayerName);
         do game.start();
         do game.dispose();
+        return;
+    }
+
+    function void help()
+    {
+        var boolean waitKey;
+        do Screen.clearScreen();
+        do Output.moveCursor(0, 0);
+        do Output.printString(Message.helpMessage());
+        do Output.moveCursor(22, 0);
+        do Output.printString(Message.helloBackspaceMessage());
+        let waitKey = true;
+        while (waitKey)
+        {
+            if (Keyboard.keyPressed() = 129) { let waitKey = false; } // backspase pressed
+        }
         return;
     }
 }

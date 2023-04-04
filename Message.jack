@@ -30,6 +30,20 @@ class Message
         return message;
     }
 
+    function String helloBackspaceMessage()
+    {
+        if (~(message = null)) { do message.dispose(); }
+        let message = "Press Backspace to return";
+        return message;
+    }
+
+    function String helpMessage()
+    {
+        if (~(message = null)) { do message.dispose(); }
+        let message = "In \"Matrix Game\" you should to put numbers from 1 to 9 in matrix. The first player win if determinant is positive number and the second player win if determinant is negative number.";
+        return message;
+    }
+
     function String enterFirstNameMessage()
     {
         if (~(message = null)) { do message.dispose(); }

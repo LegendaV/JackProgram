@@ -7,9 +7,16 @@ class OnlyOneArray
 
     constructor OnlyOneArray new(int lengthArray)
     {
+        var int i;
         let length = lengthArray;
         let emptyCellCount = length;
         let array = Array.new(length);
+        let i = 0;
+        while (i < length)
+        {
+            let array[i] = 0;
+            let i = i + 1;
+        }
         return this;
     }
 
